@@ -1,0 +1,70 @@
+<!-- KIT DE SURVIE JS - IUT INFORMATIQUE BORDEAUX -->
+<!DOCTYPE html>
+<head>
+ 
+    <meta charset="utf-8" />
+ 
+    <title>Exercice 14</title>
+    <meta name="description" content="Description de la page">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+    <style>
+    	body{ font-family: 'Quicksand', sans-serif; }
+	</style>
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+            var Utilisateur = {
+                nom:'',
+                prenom:'',
+                age:'',
+                sexe:'',
+                description:'',
+
+                init: function (nom, prenom, age,sexe,description) {
+                    this.nom = nom;
+                    this.prenom = prenom;
+                    this.age = age;
+                    this.sexe = sexe;
+                    this.description = description;
+                },
+
+                decrire: function () {
+                    console.log('nom : '+this.nom);
+                    console.log('prenom : '+this.prenom);
+                    console.log('age : '+this.age);
+                    console.log('sexe : '+this.sexe);
+                    console.log('description : '+this.description);
+                }
+            };
+
+            user = Object.create(Utilisateur);
+
+            $('form').submit(function () {
+                user.init($('#nom').val(),$('#prenom').val(),$('#age').val(),$('#sexe').val(),$('#description').val());
+                user.decrire();
+                return false;
+            });
+
+
+    	});
+   	</script>
+</head>
+<body>
+	<form>
+        <input type="text" id="nom" name="nom">
+        <input type="text" id="prenom" name="prenom">
+        <input type="number" id="age" name="age">
+        <select name="sexe" id="sexe" name="sexe">
+            <option>M</option>
+            <option>F</option>
+        </select>
+        <textarea id="description" name="description">
+
+        </textarea>
+        <input type="submit">
+    </form>
+</body>
+ 
+</html>

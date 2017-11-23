@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex4</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div ng-app="app01" ng-controller="controlleur01">
+    <input type="text" name="val1" ng-model="val1">
+    <input type="text" name="val2" ng-model="val2">
+    <select id="select" ng-model="operation">
+        <option value="+" selected>+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <p>{{ resultat() }}</p>
+    <input type="button" value="Calcul" ng-click="calcul()">
+
+</div>
+
+<script>
+     var app = angular.module("app01", []);
+
+     app.controller("controlleur01", function($scope){
+         $scope.calcul = function () {
+             switch ($scope.operation) {
+                 case "+":
+                     $scope.resultat = function(){ return parseInt($scope.val1) + parseInt($scope.val2) };
+                     break;
+                 case "-":
+                     $scope.resultat = function(){return parseInt($scope.val1) - parseInt($scope.val2)};
+                     break;
+                 case "*":
+                     $scope.resultat = function(){return parseInt($scope.val1) * parseInt($scope.val2)};
+                     break;
+                 case "/":
+                     $scope.resultat = function(){return parseInt($scope.val1) / parseInt($scope.val2)};
+                     break;
+             }
+         };
+         });
+</script>
+
+
+</body>
+</html>

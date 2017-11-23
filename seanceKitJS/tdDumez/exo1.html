@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exo1</title>
+</head>
+<body>
+
+<script type="application/javascript">
+    var etudiant = {
+        prenom:'',
+        nom:'',
+        num:'',
+        dateNaissance: []
+    };
+
+    function Etudiant(prenom,nom,num,dateNaissance) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.num = num;
+        var today = new Date();
+        var yyyy = today.getFullYear();
+        this.age = yyyy - dateNaissance[2];
+
+        this.presenter = function () {
+            console.log('prenom : '+this.prenom);
+            console.log('nom : '+this.nom);
+            console.log('num : '+this.num);
+            console.log('age : '+this.age);
+        }
+    }
+
+    var etu1 = new Etudiant('mat','du','0102',[28,1,1997]);
+    var etu2 = new Etudiant('max','du','3333',[7,10,2000]);
+    etu1.presenter();
+    etu2.presenter();
+</script>
+
+</body>
+</html>

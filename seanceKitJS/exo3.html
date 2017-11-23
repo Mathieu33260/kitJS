@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exo3</title>
+</head>
+<body>
+
+<script type="application/javascript">
+    var Personne = {
+        prenom:'',
+        nom:'',
+        dateNaissance: [],
+        age:'',
+
+        init: function (nom, prenom, date) {
+            this.nom = nom;
+            this.prenom = prenom;
+            this.dateNaissance = date;
+            var today = new Date();
+            var yyyy = today.getFullYear();
+            this.age = yyyy - date[2];
+        },
+        
+        decrire: function () {
+            console.log('prenom : '+this.prenom);
+            console.log('nom : '+this.nom);
+            console.log('age : '+this.age);
+        }
+    };
+
+    var Professeur = Object.create(Personne);
+    Professeur.email = 'prof@prof.fr';
+    Professeur.initProfesseur = function (nom, prenom, date, email) {
+        this.init(nom,prenom,date);
+        this.email = email;
+    }
+    Professeur.decrire = function () {
+        console.log('prenom : '+this.prenom);
+        console.log('nom : '+this.nom);
+        console.log('age : '+this.age);
+        console.log('email : '+this.email);
+    }
+
+    var prof1 = Object.create(Professeur);
+    prof1.initProfesseur('prof1','prenom1',[25,5,1968],'tot@tr.fr');
+    var prof2 = Object.create(Professeur);
+    prof2.initProfesseur('prof2','prenom2',[25,5,1970],'ooooo@tr.fr');
+    prof1.decrire();
+    prof2.decrire();
+</script>
+
+</body>
+</html>

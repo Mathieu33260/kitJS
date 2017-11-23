@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex5</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div ng-app="app01" ng-controller="controlleur01">
+
+    <ul>
+         <li ng-repeat="name in names">
+         {{ name.ename }}
+         </li>
+    </ul>
+
+</div>
+
+<script>
+    var app = angular.module("app01", []);
+
+    app.controller("controlleur01", function($scope, $http){
+         $http.get("https://raw.githubusercontent.com/fanzeyi/Pokemon-DB/master/pokedex.json").then(function(response){
+            $scope.response = response;
+            $scope.names = response.data;
+            /*$.each(response.data, function (index, value) {
+                    $scope.names.push(value.ename);
+            })*/
+             });
+         });
+</script>
+
+</body>
+</html>

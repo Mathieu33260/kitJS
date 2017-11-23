@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex2</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="div">hrthegaefohb ojjbojv viha vdjaefjb dj dvjhd</div>
+
+<div id="div1">hrthegaefohb ojjbojv viha vdjaefjb dj dvjhd</div>
+
+<div id="div2">hrthegaefohb ojjbojv viha vdjaefjb dj dvjhd</div>
+
+
+</body>
+<script>
+    (function($) {
+        $.fn.gis = function()
+        {
+            this.each(function() {
+                $(this).animate({fontSize: '+=1px'},300);
+            });
+            return this;
+        };
+    })(jQuery);
+
+    $(function() {
+        $('#div').hover(function(){
+            $('#div').gis();
+        });
+    });
+
+</script>
+</html>

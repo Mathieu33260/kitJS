@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex1</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+    <style>
+        .el-sort {
+            background-color: gray;
+            border: solid black 1px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="rouge" style="background-color: red;width: 100px;height: 100px;"></div>
+
+<div id="noir" style="border: solid black 1px;width: 300px;height: 300px;"></div>
+
+<div id="pos"></div>
+
+<ul id="sortable" style="width: 200px">
+    <li class="el-sort" id="1">1</li>
+    <li class="el-sort" id="2">2</li>
+    <li class="el-sort" id="3">3</li>
+    <li class="el-sort" id="4">4</li>
+    <li class="el-sort" id="5">5</li>
+</ul>
+
+<div id="ordre"></div>
+
+</body>
+<script>
+    $( function() {
+        $( "#rouge" ).draggable({
+            drag: function(event, ui) {
+                var pos = $(this).position();
+                $('#pos').text(pos.left+' '+pos.top);
+            }
+        });
+    } );
+
+    $( function() {
+        $( "#sortable" ).sortable({
+            update: function(event, ui) {
+                var order = [];
+
+                $('#sortable li').each( function(e) {
+
+                    order.push( $(this).attr('id'));
+                });
+
+                var positions = order.join(';');
+
+                $('#ordre').empty();
+                $('#ordre').append(positions);
+
+            }
+        });
+        $( "#sortable" ).disableSelection();
+    } );
+</script>
+</html>
